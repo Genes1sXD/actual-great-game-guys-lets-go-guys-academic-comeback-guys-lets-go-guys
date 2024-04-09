@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwordController : MonoBehaviour
 {
     public Transform player;
-    public float offsetDistance = 1f;
+    public float offsetDistance = 0.1f;
 
     private Vector3 originalScale;
 

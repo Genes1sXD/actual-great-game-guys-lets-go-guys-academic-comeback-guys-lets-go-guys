@@ -7,7 +7,7 @@ public class SwordAttack : MonoBehaviour
 {
     public Collider2D swordCollider;
     public float damage = 3;
-    public Vector2 rightAttackOffset = new Vector2(1f, 0); // Adjust this in the Inspector
+    public Vector2 rightAttackOffset = new Vector2(0.1f, 0); // Adjust this in the Inspector
 
     private void Awake()
     {

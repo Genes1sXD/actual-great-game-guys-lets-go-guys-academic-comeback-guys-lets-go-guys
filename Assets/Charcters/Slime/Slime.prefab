@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2992276088893317052}
   - component: {fileID: -6471690359429539115}
   - component: {fileID: 5887559533266806864}
+  - component: {fileID: 2320190551445283844}
   - component: {fileID: 5383033858775786681}
   - component: {fileID: 7459913612192042298}
   - component: {fileID: 1214288432705252336}
@@ -213,6 +214,25 @@ MonoBehaviour:
   lockXRotation: 1
   lockYRotation: 1
   lockZRotation: 1
+--- !u!114 &2320190551445283844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209828068773136596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5e8fbcc5e67c64aa9747f82dabe521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.6
+  patrolRadius: 1
+  minWaitTime: 10
+  maxWaitTime: 20
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &5383033858775786681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +242,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2209828068773136596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae3df62bf23fc6b4490077796c8990e5, type: 3}
+  m_Script: {fileID: 11500000, guid: be5e8fbcc5e67c64aa9747f82dabe521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
@@ -231,8 +251,7 @@ MonoBehaviour:
   maxWaitTime: 1
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 1
-  safeDistance: 2
+    m_Bits: 0
 --- !u!114 &7459913612192042298
 MonoBehaviour:
   m_ObjectHideFlags: 0

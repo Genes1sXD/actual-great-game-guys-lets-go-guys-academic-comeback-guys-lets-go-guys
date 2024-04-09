@@ -522,7 +522,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8060502097144509732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20197dcd8e3ad52448d549df9b01ac78, type: 3}
+  m_Script: {fileID: 11500000, guid: 02da64500e32401488aea8a0984b7430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4645745576933737529}
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0a7774a471eff47a05490f20a04798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordCollider: {fileID: 0}
+  swordCollider: {fileID: 8455381372710680739}
   damage: 3
   rightAttackOffset: {x: 1, y: 0}
 --- !u!61 &8455381372710680739
@@ -549,7 +549,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8060502097144509732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -574,7 +574,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.31307432, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -585,7 +585,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16666667, y: 1}
+  m_Size: {x: 0.6528322, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &8802560592342120799
 GameObject:
