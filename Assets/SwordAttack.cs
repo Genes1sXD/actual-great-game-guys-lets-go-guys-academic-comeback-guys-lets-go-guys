@@ -1,32 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class SwordAttack : MonoBehaviour
 {
     public Collider2D swordCollider;
     public float damage = 3;
-    public Vector2 rightAttackOffset = new Vector2(0.1f, 0); // Adjust this in the Inspector
+    Vector2 rightAttackOffset;
 
-    private void Awake()
+    private void Start()
     {
-        // Disable the collider at start to prevent the sword from attacking immediately
-        swordCollider.enabled = false;
+        rightAttackOffset = transform.position;
     }
 
     public void AttackRight()
     {
         swordCollider.enabled = true;
-        // Consider using localPosition for offset to be relative to the player
         transform.localPosition = rightAttackOffset;
     }
 
     public void AttackLeft()
     {
         swordCollider.enabled = true;
-        // Flip the attack offset for the left attack
-        transform.localPosition = new Vector2(-rightAttackOffset.x, rightAttackOffset.y);
+        transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
     }
 
     public void StopAttack()
@@ -36,13 +32,14 @@ public class SwordAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.tag == "Enemy")
         {
+            // Deal damage to the enemy
             Enemy enemy = other.GetComponent<Enemy>();
+
             if (enemy != null)
             {
-                // Assuming the Enemy script has a method to handle taking damage
-                enemy.TakeDamage(damage);
+                enemy.Health -= damage;
             }
         }
     }

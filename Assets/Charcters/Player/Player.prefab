@@ -164,8 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  dashSpeed: 10
-  dashDuration: 1
+  dashSpeed: 5
+  dashDuration: 0.1
+  dashCooldown: 1
   collisionOffset: 0.01
   movementFilter:
     useTriggers: 0
@@ -371,7 +372,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5161748057070519004}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 83214c10d52fcda48957bc4090ab6be6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

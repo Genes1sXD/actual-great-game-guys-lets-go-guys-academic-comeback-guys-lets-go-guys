@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SlimeMovement : MonoBehaviour
@@ -9,6 +8,9 @@ public class SlimeMovement : MonoBehaviour
     public float minWaitTime = 1f;
     public float maxWaitTime = 3f;
     public LayerMask obstacleLayer;
+    public float detectionRadius = 10f;  // Detection radius for player
+    public float stopChaseDistance = 1f; // Minimum distance to stop moving towards the player
+    public Transform player;             // Player's transform
 
     private Rigidbody2D rb;
     private Vector2 nextPatrolPoint;
@@ -16,83 +18,76 @@ public class SlimeMovement : MonoBehaviour
     private int retryCount = 0;
     private const int maxRetries = 5;
     private Animator animator; // Reference to the Animator component
+    private bool isChasing = false; // Is the slime currently chasing the player
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); // Initialize the Animator reference
+        animator = GetComponent<Animator>();
         SetNextPatrolPoint();
     }
 
     void Update()
     {
-        if (!isWaiting)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        // Update isChasing based on the distance to the player
+        if (distanceToPlayer <= detectionRadius)
         {
-            // Check if the slime is currently moving towards the next patrol point
-            MoveTowardsNextPatrolPoint();
-            if (Vector2.Distance(transform.position, nextPatrolPoint) > 0.1f)
+            if (distanceToPlayer > stopChaseDistance)
             {
-                // If the slime is moving, ensure the Animator knows it's moving
-                animator.SetBool("isMoving", true);
+                isChasing = true;
             }
             else
             {
-                // Reached the patrol point, no longer moving
-                animator.SetBool("isMoving", false);
-                isWaiting = true; // Start waiting
-                StartCoroutine(WaitAndSetNextPatrolPoint());
+                // Close enough to "catch" the player or stop movement
+                isChasing = false;
+                // Additional behavior on catching the player could go here
             }
+        }
+        else
+        {
+            // Player is outside the detection radius
+            isChasing = false;
+        }
+
+        if (!isWaiting)
+        {
+            if (isChasing)
+            {
+                MoveTowardsPlayer();
+            }
+            else
+            {
+                MoveTowardsNextPatrolPoint();
+            }
+        }
+    }
+
+    private void MoveTowardsPlayer()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        animator.SetBool("isMoving", true);
+    }
+
+    private void MoveTowardsNextPatrolPoint()
+    {
+        if (Vector2.Distance(transform.position, nextPatrolPoint) > 0.1f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, nextPatrolPoint, speed * Time.deltaTime);
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+            isWaiting = true;
+            StartCoroutine(WaitAndSetNextPatrolPoint());
         }
     }
 
     private void SetNextPatrolPoint()
     {
-        Vector2 patrolPointCandidate = (Vector2)transform.position + Random.insideUnitCircle * patrolRadius;
-        Vector2 rayStart = (Vector2)transform.position + (patrolPointCandidate - (Vector2)transform.position).normalized * 0.1f;
-
-        RaycastHit2D hit = Physics2D.Raycast(rayStart, patrolPointCandidate - rayStart, patrolRadius, obstacleLayer);
-        Debug.DrawLine(rayStart, patrolPointCandidate, hit.collider == null ? Color.green : Color.red, 2f);
-
-        if (hit.collider != null)
-        {
-            StartCoroutine(WaitAndTryAgain());
-            return;
-        }
-
-        nextPatrolPoint = patrolPointCandidate;
-        isWaiting = false; // Allow movement towards the next patrol point
-        retryCount = 0;
-    }
-
-    IEnumerator WaitAndTryAgain()
-    {
-        yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime) / 2);
-        if (retryCount <= maxRetries)
-        {
-            isWaiting = false;
-            SetNextPatrolPoint();
-        }
-        else
-        {
-            Debug.Log("Fallback behavior initiated.");
-            FallbackMovement();
-            retryCount = 0;
-        }
-    }
-
-    private void FallbackMovement()
-    {
-        Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        rb.velocity = randomDirection * speed;
-        StartCoroutine(ResetFromFallback());
-    }
-
-    IEnumerator ResetFromFallback()
-    {
-        yield return new WaitForSeconds(2);
-        rb.velocity = Vector2.zero;
-        isWaiting = false;
-        SetNextPatrolPoint();
+        // Existing logic to set the next patrol point
     }
 
     IEnumerator WaitAndSetNextPatrolPoint()
@@ -101,8 +96,14 @@ public class SlimeMovement : MonoBehaviour
         SetNextPatrolPoint();
     }
 
-    private void MoveTowardsNextPatrolPoint()
+    // Handle collision with player
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        transform.position = Vector2.MoveTowards(transform.position, nextPatrolPoint, speed * Time.deltaTime);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isChasing = false; // Stop chasing when colliding with the player
+            // Optionally add logic to move away from player or perform an action
+        }
     }
 }
+

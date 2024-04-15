@@ -163,7 +163,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2209828068773136596}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 83214c10d52fcda48957bc4090ab6be6, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -233,6 +233,9 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  detectionRadius: 1000
+  stopChaseDistance: 0.1
+  player: {fileID: 0}
 --- !u!114 &5383033858775786681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,6 +255,9 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  detectionRadius: 10
+  stopChaseDistance: 1
+  player: {fileID: 0}
 --- !u!114 &7459913612192042298
 MonoBehaviour:
   m_ObjectHideFlags: 0

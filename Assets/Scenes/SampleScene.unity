@@ -140,8 +140,12 @@ PrefabInstance:
       value: Slime
       objectReference: {fileID: 0}
     - target: {fileID: 2320190551445283844, guid: f863a9b5c4ea4c2439d37b6863d74e7e, type: 3}
-      propertyPath: obstacleLayer.m_Bits
-      value: 64
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 699076622}
+    - target: {fileID: 4622468823706396623, guid: f863a9b5c4ea4c2439d37b6863d74e7e, type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4985631802584758083, guid: f863a9b5c4ea4c2439d37b6863d74e7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -189,11 +193,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f863a9b5c4ea4c2439d37b6863d74e7e, type: 3}
---- !u!1 &107964051 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2209828068773136596, guid: f863a9b5c4ea4c2439d37b6863d74e7e, type: 3}
-  m_PrefabInstance: {fileID: 107102954}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &230967265
 GameObject:
   m_ObjectHideFlags: 0
@@ -10817,11 +10816,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56a45fa0048569408e5eec8216572b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slimePrefab: {fileID: 107964051}
+  slimePrefab: {fileID: 2209828068773136596, guid: f863a9b5c4ea4c2439d37b6863d74e7e, type: 3}
   playerTransform: {fileID: 699076622}
-  minSpawnDistance: 2
-  maxSpawnDistance: 3
-  spawnInterval: 5
+  minSpawnDistance: 4
+  maxSpawnDistance: 5
+  spawnInterval: 0.2
 --- !u!4 &1943995189
 Transform:
   m_ObjectHideFlags: 0
