@@ -227,9 +227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.6
-  patrolRadius: 1
-  minWaitTime: 10
-  maxWaitTime: 20
+  patrolRadius: 1.5
+  minWaitTime: 0.1
+  maxWaitTime: 0.5
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
