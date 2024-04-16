@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwordAttack : MonoBehaviour
 {
     public Collider2D swordCollider;
-    public float damage = 3;
+    public XPManager xpManager; // Reference to the XPManager script
     Vector2 rightAttackOffset;
 
     private void Start()
@@ -17,12 +17,14 @@ public class SwordAttack : MonoBehaviour
     {
         swordCollider.enabled = true;
         transform.localPosition = rightAttackOffset;
+        DealDamage();
     }
 
     public void AttackLeft()
     {
         swordCollider.enabled = true;
         transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
+        DealDamage();
     }
 
     public void StopAttack()
@@ -30,16 +32,22 @@ public class SwordAttack : MonoBehaviour
         swordCollider.enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void DealDamage()
     {
-        if (other.tag == "Enemy")
-        {
-            // Deal damage to the enemy
-            Enemy enemy = other.GetComponent<Enemy>();
+        float damage = xpManager.GetCurrentDamage();
 
-            if (enemy != null)
+        // Apply damage to enemies
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, swordCollider.bounds.size.x);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.CompareTag("Enemy"))
             {
-                enemy.Health -= damage;
+                // Deal damage to the enemy
+                Enemy enemyScript = enemy.GetComponent<Enemy>();
+                if (enemyScript != null)
+                {
+                    enemyScript.TakeDamage(damage);
+                }
             }
         }
     }
