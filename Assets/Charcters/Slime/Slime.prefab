@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -6471690359429539115}
   - component: {fileID: 5887559533266806864}
   - component: {fileID: 7511183979566897567}
+  - component: {fileID: 7009263202302583304}
   - component: {fileID: 2320190551445283844}
   - component: {fileID: 7459913612192042298}
   - component: {fileID: 1214288432705252336}
@@ -228,6 +229,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speed: 0.6
+--- !u!114 &7009263202302583304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209828068773136596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c657beef35e8549a061b1bef3aec5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 2
+  damage: 10
+  attackRange: 0.1
+  requiredTimeInRange: 0.1
 --- !u!114 &2320190551445283844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be5e8fbcc5e67c64aa9747f82dabe521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.6
+  speed: 0.85
   detectionRadius: 1000
   stopChaseDistance: 0
   player: {fileID: 0}

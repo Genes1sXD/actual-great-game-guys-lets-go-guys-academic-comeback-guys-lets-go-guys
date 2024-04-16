@@ -38,18 +38,16 @@ public class PlayerController : MonoBehaviour
         if (!isDashing)
         {
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if (movementInput != Vector2.zero)
+            {
+                UpdateAnimationAndDirection(); // Update the direction and animation state
+            }
+
             if (Input.GetKeyDown(KeyCode.Space) && Time.time >= lastDashTime + dashCooldown)
             {
                 StartDash();
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.F)) // Assume KeyCode.F is for firing/attacking
-        {
-            OnFire();
-        }
-
-        UpdateAnimationAndDirection();
     }
 
     private void FixedUpdate()
@@ -94,6 +92,7 @@ public class PlayerController : MonoBehaviour
             dashTimeLeft = dashDuration;
             lastDirection = movementInput.normalized;
             lastDashTime = Time.time;
+            animator.SetBool("isDashing", true);  // Set the dashing animation state
         }
     }
 
@@ -107,6 +106,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             isDashing = false;
+            animator.SetBool("isDashing", false);  // Reset the dashing animation state
         }
     }
 
@@ -123,8 +123,6 @@ public class PlayerController : MonoBehaviour
         {
             success = TryMove(new Vector2(0, movementInput.y));
         }
-
-        animator.SetBool("isMoving", success);
     }
 
     private void UpdateAnimationAndDirection()
@@ -137,6 +135,9 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+
+        // Ensure the movement animation state is correctly set based on movement success
+        animator.SetBool("isMoving", movementInput != Vector2.zero);
     }
 
     private bool TryMove(Vector2 direction)
@@ -163,5 +164,6 @@ public class PlayerController : MonoBehaviour
         swordAttack.StopAttack();
     }
 }
+
 
 

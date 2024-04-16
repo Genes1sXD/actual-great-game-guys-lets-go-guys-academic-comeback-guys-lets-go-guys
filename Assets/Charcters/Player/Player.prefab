@@ -92,7 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordCollider: {fileID: 5990268228664236244}
   damage: 1
-  rightAttackOffset: {x: 1, y: 0}
 --- !u!1 &5161748057070519004
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4645745576933737529}
+  - component: {fileID: 2215095026989649310}
   - component: {fileID: 7541978758315451832}
   - component: {fileID: 7083124976265207403}
   - component: {fileID: 4303867989610924587}
@@ -136,6 +136,21 @@ Transform:
   - {fileID: 747022596383724023}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2215095026989649310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161748057070519004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7570627843e9744eb608a2aa4bea7e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  isInvulnerable: 0
 --- !u!114 &7541978758315451832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +559,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordCollider: {fileID: 8455381372710680739}
   damage: 3
-  rightAttackOffset: {x: 1, y: 0}
 --- !u!61 &8455381372710680739
 BoxCollider2D:
   m_ObjectHideFlags: 0
