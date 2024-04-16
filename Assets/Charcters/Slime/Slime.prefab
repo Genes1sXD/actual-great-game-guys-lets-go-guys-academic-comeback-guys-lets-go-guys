@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2992276088893317052}
   - component: {fileID: -6471690359429539115}
   - component: {fileID: 5887559533266806864}
+  - component: {fileID: 7511183979566897567}
   - component: {fileID: 2320190551445283844}
-  - component: {fileID: 5383033858775786681}
   - component: {fileID: 7459913612192042298}
   - component: {fileID: 1214288432705252336}
   m_Layer: 0
@@ -214,6 +214,20 @@ MonoBehaviour:
   lockXRotation: 1
   lockYRotation: 1
   lockZRotation: 1
+--- !u!114 &7511183979566897567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209828068773136596}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a919bc8020ff3dc48bf5ef1ed8bea0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 0.6
 --- !u!114 &2320190551445283844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,36 +241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.6
-  patrolRadius: 1.5
-  minWaitTime: 0.1
-  maxWaitTime: 0.5
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
   detectionRadius: 1000
-  stopChaseDistance: 0.1
-  player: {fileID: 0}
---- !u!114 &5383033858775786681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2209828068773136596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be5e8fbcc5e67c64aa9747f82dabe521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.5
-  patrolRadius: 1
-  minWaitTime: 0.1
-  maxWaitTime: 1
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  detectionRadius: 10
-  stopChaseDistance: 1
+  stopChaseDistance: 0
   player: {fileID: 0}
 --- !u!114 &7459913612192042298
 MonoBehaviour:
@@ -281,7 +267,7 @@ Animator:
   m_GameObject: {fileID: 2209828068773136596}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5c91bd90fd6c9c42a12a9e94a286037, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
