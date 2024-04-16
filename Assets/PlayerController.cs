@@ -84,6 +84,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     private void StartDash()
     {
         if (!isDashing && movementInput != Vector2.zero)
