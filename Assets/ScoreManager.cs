@@ -5,18 +5,33 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager instance;
 
     public Text scoreText;
 
     int score = 0;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public void AddPoint()
+    {
+
+        score += 1;
+        scoreText.text = score.ToString() + " POINTS";
+
+    }
+    
     void Start()
     {
+
         scoreText.text = score.ToString() + " POINTS";
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

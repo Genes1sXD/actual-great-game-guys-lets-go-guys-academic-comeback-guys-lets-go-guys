@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour
 
             if (health <= 0)
             {
-                animator.SetTrigger("death");
+                ScoreManager.instance.AddPoint();
+                RemoveEnemy();
             }
         }
         get { return health; }
@@ -41,3 +42,4 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
