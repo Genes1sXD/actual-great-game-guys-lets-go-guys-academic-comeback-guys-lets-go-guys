@@ -12,6 +12,9 @@ public class SlimeMovement : MonoBehaviour
     private Animator animator; // Reference to the Animator component
     private bool isChasing = false; // Is the slime currently chasing the player
 
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -42,6 +45,11 @@ public class SlimeMovement : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         animator.SetBool("isMoving", isChasing);
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(jumpSound);
+        }
     }
 }
 

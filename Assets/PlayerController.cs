@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,8 +18,14 @@ public class PlayerController : MonoBehaviour
     public ContactFilter2D movementFilter;
     public SwordAttack swordAttack; // Make sure SwordAttack is correctly implemented and accessible
 
+    public AudioSource audioSource;
+    public float loopDuration = 3f;
+    float audioLoopTimer;
+    public AudioClip walkingSound;
+
     Vector2 movementInput;
     Vector2 lastDirection;
+    Vector2 zero;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
     Animator animator;
@@ -28,13 +35,14 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         if (!isDashing)
         {
             movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -61,6 +69,19 @@ public class PlayerController : MonoBehaviour
             else if (movementInput != Vector2.zero)
             {
                 MoveCharacter();
+
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(walkingSound);
+                }
+
+            }
+            else if (movementInput == Vector2.zero)
+            {
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
             }
         }
     }
