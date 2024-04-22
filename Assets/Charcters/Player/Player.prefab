@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordCollider: {fileID: 5990268228664236244}
-  damage: 1
+  xpManager: {fileID: 0}
 --- !u!1 &5161748057070519004
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordCollider: {fileID: 8455381372710680739}
-  damage: 3
+  xpManager: {fileID: 0}
 --- !u!61 &8455381372710680739
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -14,17 +14,23 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth; // Set current health to maximum at the start
+        if (GetComponent<FlashDamage>() == null)
+        {
+            Debug.LogError("FlashDamage component not found on the player!");
+        }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int amount)
     {
-        if (isInvulnerable)
+        if (isInvulnerable || currentHealth <= 0)
             return;
 
-        currentHealth -= damage;
+        currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         OnHealthChanged?.Invoke(currentHealth);
+
+        GetComponent<FlashDamage>().Flash(); // Trigger the flash effect on taking damage
 
         if (currentHealth <= 0)
         {
@@ -56,4 +62,5 @@ public class PlayerHealth : MonoBehaviour
         isInvulnerable = isInvul;
     }
 }
+
 
