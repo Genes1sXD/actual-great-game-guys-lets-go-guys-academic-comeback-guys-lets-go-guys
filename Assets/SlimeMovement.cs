@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class SlimeMovement : MonoBehaviour
 {
-    public float maxDistance = 100f;
-    public float minVolume = 0f;
-    public float maxVolume = 1f;
     public float speed = 2f;
     public float detectionRadius = 10f; // Detection radius for player
     public float stopChaseDistance = 1f; // Minimum distance to stop moving towards the player
     public Transform player; // Player's transform, to be set by the spawner
-    public Transform cameraTransform;
 
     private Animator animator; // Reference to the Animator component
     private bool isChasing = false; // Is the slime currently chasing the player
@@ -22,7 +18,6 @@ public class SlimeMovement : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        FindCamera();
     }
 
     void Update()
@@ -44,25 +39,8 @@ public class SlimeMovement : MonoBehaviour
             isChasing = false;
             animator.SetBool("isMoving", false);
         }
-
-        float distanceToCamera = Vector3.Distance(transform.position, cameraTransform.position);
-        float clampedDistance = Mathf.Clamp(distanceToCamera, 0f, maxDistance);
-        float t = clampedDistance / maxDistance;
-
-        float volume = Mathf.Lerp(maxVolume, minVolume, t);
-        volume = Mathf.Clamp01(volume);
-
-        audioSource.volume = volume;
     }
 
-    private void FindCamera()
-    {
-        Camera mainCamera = Camera.main;
-        if (mainCamera != null)
-        {
-            cameraTransform = mainCamera.transform;
-        }
-    }
     private void MoveTowardsPlayer()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
