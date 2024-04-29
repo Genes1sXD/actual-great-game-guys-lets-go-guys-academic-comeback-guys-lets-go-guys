@@ -13,24 +13,18 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth; // Set current health to maximum at the start
-        if (GetComponent<FlashDamage>() == null)
-        {
-            Debug.LogError("FlashDamage component not found on the player!");
-        }
+        currentHealth = maxHealth; 
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int damage)
     {
-        if (isInvulnerable || currentHealth <= 0)
+        if (isInvulnerable)
             return;
 
-        currentHealth -= amount;
+        currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         OnHealthChanged?.Invoke(currentHealth);
-
-        GetComponent<FlashDamage>().Flash(); // Trigger the flash effect on taking damage
 
         if (currentHealth <= 0)
         {
@@ -40,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int amount)
     {
-        if (currentHealth <= 0) return; // Do not heal if player is already dead
+        if (currentHealth <= 0) return; 
 
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -52,15 +46,14 @@ public class PlayerHealth : MonoBehaviour
     {
         OnPlayerDied?.Invoke();
         Debug.Log("Player Died!");
-        // Disable player controls or trigger death animation
-        // Consider disabling the script or the component that handles player input
+
+        Destroy(gameObject); 
     }
 
-    // Example method to toggle invulnerability, useful for power-ups or special game mechanics
+
     public void SetInvulnerability(bool isInvul)
     {
         isInvulnerable = isInvul;
     }
 }
-
 
