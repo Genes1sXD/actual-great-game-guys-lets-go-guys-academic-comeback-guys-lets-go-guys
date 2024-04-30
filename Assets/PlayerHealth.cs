@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth; // Set current health to maximum at the start
-        if (GetComponent<FlashDamage>() == null)
+       
         {
             Debug.LogError("FlashDamage component not found on the player!");
         }
@@ -30,8 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
         OnHealthChanged?.Invoke(currentHealth);
 
-        GetComponent<FlashDamage>().Flash(); // Trigger the flash effect on taking damage
-
+       
         if (currentHealth <= 0)
         {
             Die();
