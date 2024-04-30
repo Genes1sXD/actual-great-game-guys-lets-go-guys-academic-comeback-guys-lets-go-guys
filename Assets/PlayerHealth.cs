@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public bool isInvulnerable = false;
+    public bool isAlive = true;
+  
 
     public event System.Action<int> OnHealthChanged;
     public event System.Action OnPlayerDied;
@@ -47,10 +49,11 @@ public class PlayerHealth : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth);
     }
 
-    private void Die()
+    public void Die()
     {
         OnPlayerDied?.Invoke();
         Debug.Log("Player Died!");
+        isAlive = false; //spelaren dör
         // Disable player controls or trigger death animation
         // Consider disabling the script or the component that handles player input
     }
