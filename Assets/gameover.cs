@@ -14,6 +14,5 @@ public class gameover : MonoBehaviour
     void Update()
     {
         
-       
     }
 }

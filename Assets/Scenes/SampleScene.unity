@@ -1020,6 +1020,7 @@ GameObject:
   - component: {fileID: 635668449}
   - component: {fileID: 635668448}
   - component: {fileID: 635668447}
+  - component: {fileID: 635668450}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1088,6 +1089,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -41}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &635668450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635668446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92e47c01e0f64741a29ec70d248c1e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xpText: {fileID: 635668447}
 --- !u!4 &699076622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4645745576933737529, guid: ddaf00acd145d5f40955095c0627f55c, type: 3}
@@ -12257,8 +12271,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4645745576933737529, guid: ddaf00acd145d5f40955095c0627f55c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 176890804}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5161748057070519004, guid: ddaf00acd145d5f40955095c0627f55c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 912465125380399786}
   m_SourcePrefab: {fileID: 100100000, guid: ddaf00acd145d5f40955095c0627f55c, type: 3}
+--- !u!1 &912465125380399785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5161748057070519004, guid: ddaf00acd145d5f40955095c0627f55c, type: 3}
+  m_PrefabInstance: {fileID: 912465125380399784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &912465125380399786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912465125380399785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fac272e634ec434fb82f85046310a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentXP: 0
+  currentLevel: 1
+  xpToLevelUp: 10
+  xpIncreaseFactor: 1.2
+  enemyXP: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
