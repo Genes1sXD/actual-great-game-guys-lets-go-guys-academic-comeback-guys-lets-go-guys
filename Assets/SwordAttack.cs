@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwordAttack : MonoBehaviour
 {
     public Collider2D swordCollider;
-  // Reference to the XPManager script
+    public XPManager xpManager; // Reference to the XPManager script
     Vector2 rightAttackOffset;
 
     private void Start()
@@ -34,7 +34,7 @@ public class SwordAttack : MonoBehaviour
 
     void DealDamage()
     {
-        float damage = 3;
+        float damage = xpManager.GetCurrentDamage();
 
         // Apply damage to enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, swordCollider.bounds.size.x);
