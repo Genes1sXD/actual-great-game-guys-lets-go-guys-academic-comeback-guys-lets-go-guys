@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
 {
     Animator animator;
     public float health = 3;
-    public PlayerXP PlayerXP;
 
     public float Health
     {
@@ -16,7 +15,7 @@ public class Enemy : MonoBehaviour
 
             if (health <= 0)
             {
-                PlayerXP.PlayerXP++;
+                ScoreManager.instance.AddPoint();
                 RemoveEnemy();
             }
         }
