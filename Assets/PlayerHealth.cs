@@ -14,6 +14,10 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth; // Set current health to maximum at the start
+       
+        {
+            Debug.LogError("FlashDamage component not found on the player!");
+        }
     }
 
     public void TakeDamage(int amount)
