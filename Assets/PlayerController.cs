@@ -190,10 +190,6 @@ public class PlayerController : MonoBehaviour
     {
         swordAttack.StopAttack();
     }
-    public void IncreaseSpeed()
-    {
-        moveSpeed += 0.1f; // Increase speed by 0.5
-    }
 }
 
 

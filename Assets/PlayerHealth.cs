@@ -56,12 +56,6 @@ public class PlayerHealth : MonoBehaviour
     {
         isInvulnerable = isInvul;
     }
-    public void SetHealth(int newHealth)
-    {
-        // Ensure the new health value is within the range of 0 and maxHealth
-        currentHealth = Mathf.Clamp(newHealth, 0, maxHealth);
-    }
-
 }
 
 
