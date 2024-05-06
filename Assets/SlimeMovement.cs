@@ -39,6 +39,15 @@ public class SlimeMovement : MonoBehaviour
             isChasing = false;
             animator.SetBool("isMoving", false);
         }
+        
+        if (Time.timeScale == 0f)
+        {
+
+            audioSource.Stop();
+
+        } 
+        
+      
     }
 
     private void MoveTowardsPlayer()
@@ -46,7 +55,7 @@ public class SlimeMovement : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         animator.SetBool("isMoving", isChasing);
 
-        if (!audioSource.isPlaying)
+        if (!audioSource.isPlaying && Time.timeScale == 1f)
         {
             audioSource.PlayOneShot(jumpSound);
         }

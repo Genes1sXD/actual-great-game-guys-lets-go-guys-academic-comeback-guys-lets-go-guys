@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f)
+        {
+            audioSource.Stop();
+        }
         rb = GetComponent<Rigidbody2D>();
 
         if (!isDashing)
@@ -70,7 +74,7 @@ public class PlayerController : MonoBehaviour
             {
                 MoveCharacter();
 
-                if (!audioSource.isPlaying)
+                if (!audioSource.isPlaying && Time.timeScale == 1f)
                 {
                     audioSource.PlayOneShot(walkingSound);
                 }
