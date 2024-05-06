@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class XPCounter : MonoBehaviour
 {
+
+    public levelupcard levelupcard;
     public int currentXP = 0;
     public int currentLevel = 1;
     public int xpToLevelUp = 10;
@@ -25,7 +27,13 @@ public class XPCounter : MonoBehaviour
     {
         currentLevel++;
         currentXP -= xpToLevelUp;
-        xpToLevelUp = Mathf.RoundToInt(xpToLevelUp * xpIncreaseFactor); // Increase XP required for next level
+        xpToLevelUp = Mathf.RoundToInt(xpToLevelUp * xpIncreaseFactor);
+        if (levelupcard != null)
+        {
+            levelupcard.LevelUp2();
+        }
+        // Increase XP required for next level
         // You can add code here to adjust player stats or abilities based on the new level
     }
 }
+
