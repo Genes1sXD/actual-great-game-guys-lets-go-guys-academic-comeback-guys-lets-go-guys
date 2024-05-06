@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
     public Collider2D swordCollider;
     Vector2 rightAttackOffset;
+
+    // Variable to store player's damage
+    private float playerDamage = 1;
 
     private void Start()
     {
@@ -33,8 +34,6 @@ public class SwordAttack : MonoBehaviour
 
     void DealDamage()
     {
-        float damage = 3;
-
         // Apply damage to enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, swordCollider.bounds.size.x);
         foreach (Collider2D enemy in hitEnemies)
@@ -45,9 +44,16 @@ public class SwordAttack : MonoBehaviour
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 if (enemyScript != null)
                 {
-                    enemyScript.TakeDamage(damage);
+                    enemyScript.TakeDamage(playerDamage);
                 }
             }
         }
+    }
+
+    // Method to increase player's damage
+    public void IncreaseDamage()
+    {
+        // Increase player's damage by 1
+        playerDamage += 1;
     }
 }
